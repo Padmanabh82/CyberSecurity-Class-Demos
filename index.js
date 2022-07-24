@@ -9,12 +9,12 @@ let Output, PreviousOutput
 
 http
   .createServer(function (request, response) {
-    if (request.url === "/S-Output") {
+    if (request.url.includes("/S-Output")) {
       PreviousOutput = Output;
       Output = url.parse(request.url, true).query;
       response.writeHead(200);
       response.end();
-    } else if (request.url === "/R-Output") {
+    } else if (request.url.includes("/R-Output")) {
       response.writeHead(200, {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',

