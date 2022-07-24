@@ -54,7 +54,7 @@
     <script>
       const data = [], output = new EventSource("/S-Output")
       output.addEventListener("message", event => {
-        data.push(JSON.stringify(event.data, null, 4));
+        data.push(event.data);
         document.getElementById("Output").innerHTML = data;
       })
     </script>
