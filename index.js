@@ -22,7 +22,7 @@ http
       });
       setInterval(() => {
         if (Output !== PreviousOutput || Output !== undefined){
-          response.write(`data: ${JSON.stringify(Output)}\n\n`)
+          response.write(`data: ${JSON.stringify(Output, null, 4)}\n\n`)
         }
       }, 700)
       
