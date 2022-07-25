@@ -5,24 +5,24 @@ import url from "node:url";
 
 const ServerPort = process.env.PORT || 5500
 
-let Output, PreviousOutput
+let Output, PreviouslySendOutput
 
 http
   .createServer(function (request, response) {
     if (request.url.includes("/S-Output")) {
-      PreviousOutput = Output;
       Output = url.parse(request.url, true).query;
       response.writeHead(200);
       response.end();
     } else if (request.url.includes("/R-Output")) {
       response.writeHead(200, {
-        'Content-Type': 'text/event-stream',
+        'Content-Type': 'text/event-stream; charset=utf-8',
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive'
       });
       setInterval(() => {
-        if (Output !== PreviousOutput || Output !== undefined){
+        if (Output !== PreviouslySendOutput && Output !== undefined){
           response.write(`data: ${JSON.stringify(Output, null, 4)}\n\n`)
+          PreviouslySendOutput = Output;
         }
       }, 700)
       

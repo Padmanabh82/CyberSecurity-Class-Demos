@@ -52,8 +52,9 @@
       <div id="Output"></div>
     </div>
     <script>
-      const data = [], output = new EventSource("/S-Output")
+      const data = [], output = new EventSource("/R-Output")
       output.addEventListener("message", event => {
+        console.log(event)
         data.push(event.data);
         document.getElementById("Output").innerHTML = data;
       })
