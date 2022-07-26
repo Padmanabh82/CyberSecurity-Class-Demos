@@ -24,7 +24,7 @@
       div {
         margin-left: 5em;
       }
-      #Output {
+      #Output-div{
         background-color: #f8f0e3;
         height: 15em;
         width: 30em;
@@ -49,13 +49,12 @@
         victim's infrastructure like ransomware.
         <a href="./phishing/Facebook.html" target="_blank">Lets see some !!</a>
       </p>
-      <div id="Output"></div>
+      <div id="Output-div"><pre><code id="Output"></code></pre></div>
     </div>
     <script>
       const data = [], output = new EventSource("/R-Output")
       output.addEventListener("message", event => {
-        console.log(event)
-        data.push(event.data);
+        data.push(JSON.stringify(JSON.parse(event.data), null, 4));
         document.getElementById("Output").innerHTML = data;
       })
     </script>

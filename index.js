@@ -3,9 +3,18 @@ import fs from "node:fs";
 import path from "node:path";
 import url from "node:url";
 
-const ServerPort = process.env.PORT || 5500
+const ServerPort = process.env.PORT || 5500;
 
-let Output, PreviouslySendOutput
+let Output = {
+    From: "",
+    Pass: "",
+    User: "",
+  },
+  PreviouslySendOutput = {
+    From: "",
+    Pass: "",
+    User: "",
+  };
 
 http
   .createServer(function (request, response) {
@@ -15,17 +24,16 @@ http
       response.end();
     } else if (request.url.includes("/R-Output")) {
       response.writeHead(200, {
-        'Content-Type': 'text/event-stream; charset=utf-8',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive'
+        "Content-Type": "text/event-stream; charset=utf-8",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
       });
       setInterval(() => {
-        if (Output !== PreviouslySendOutput && Output !== undefined){
-          response.write(`data: ${JSON.stringify(Output, null, 4)}\n\n`)
+        if (Output.Pass !== PreviouslySendOutput.Pass && Output !== undefined) {
+          response.write(`data: ${JSON.stringify(Output)}\n\n`);
           PreviouslySendOutput = Output;
         }
-      }, 700)
-      
+      }, 700);
     } else {
       let filePath = "." + request.url;
       if (filePath == "./") filePath = "./index.html";
