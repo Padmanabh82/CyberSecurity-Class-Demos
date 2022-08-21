@@ -9,7 +9,7 @@ These are some demos which i used to impress my school teacher and share some kn
 
 ## Deployment
 
-The project is Deployed on [heroku](https://www.heroku.com/) with their support of automation
+The project was Deployed on [heroku](https://www.heroku.com/) with their support of automation
 ## Run Locally
 
 Clone the project
